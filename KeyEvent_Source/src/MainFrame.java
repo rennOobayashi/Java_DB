@@ -105,20 +105,20 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        taOutput.setText("");
+        taOutput.setText(null);
+        tfInput.setText(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tfInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfInputKeyTyped
-        if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
-            taOutput.setText(taOutput.getText() + evt.getKeyChar());
-        }
-        else if (evt.getKeyChar() == KeyEvent.VK_ENTER){
-            taOutput.setText(taOutput.getText() + "\n");
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER){
+            taOutput.append(tfInput.getText() + "\n");
+            tfInput.setText(null);
         }
     }//GEN-LAST:event_tfInputKeyTyped
 
     private void tfInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInputActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_tfInputActionPerformed
 
     /**

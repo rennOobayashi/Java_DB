@@ -7,6 +7,9 @@
  *
  * @author devfo
  */
+
+import java.awt.event.KeyEvent;
+
 public class MainFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
@@ -40,11 +43,22 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel2.setText("TextArea");
 
+        tfInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfInputActionPerformed(evt);
+            }
+        });
+        tfInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfInputKeyTyped(evt);
+            }
+        });
+
         taOutput.setColumns(20);
         taOutput.setRows(5);
         jScrollPane1.setViewportView(taOutput);
 
-        jButton1.setText("Append");
+        jButton1.setText("Reset");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -76,28 +90,36 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String strCRLF = "\n"; //Carriage Return + Line Feed
-        String strData = null;
-        
-        strData = tfInput.getText() + strCRLF;
-        taOutput.append(strData);
-        
-        tfInput.setText(null);
+        taOutput.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tfInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfInputKeyTyped
+        if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
+            taOutput.setText(taOutput.getText() + evt.getKeyChar());
+        }
+        else if (evt.getKeyChar() == KeyEvent.VK_ENTER){
+            taOutput.setText(taOutput.getText() + "\n");
+        }
+    }//GEN-LAST:event_tfInputKeyTyped
+
+    private void tfInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfInputActionPerformed
 
     /**
      * @param args the command line arguments

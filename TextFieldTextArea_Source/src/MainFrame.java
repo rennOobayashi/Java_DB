@@ -92,9 +92,8 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String strCRLF = "\n"; //Carriage Return + Line Feed
         String strData = null;
-        strData = taOutput.getText();
-        strData += tfInput.getText() + strCRLF;
-        taOutput.setText(strData);
+        strData = tfInput.getText() + strCRLF;
+        taOutput.append(strData);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

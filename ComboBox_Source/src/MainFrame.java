@@ -89,7 +89,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void cmxJobItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmxJobItemStateChanged
         String StrData = null;
         
-        StrData = "당신의 직업은 " + cmxJob.getSelectedItem().toString() + "입니다.\n";
+        StrData = "당신의 직업은 " + cmxJob.getSelectedItem().toString() + 
+                "(" + cmxJob.getSelectedIndex() + ")" + "입니다.\n";
         
         taOutput.setText(StrData);
     }//GEN-LAST:event_cmxJobItemStateChanged

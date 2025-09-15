@@ -29,7 +29,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblJob = new javax.swing.JLabel();
         cmxJob = new javax.swing.JComboBox<>();
-        btnSubmit = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taOutput = new javax.swing.JTextArea();
@@ -39,12 +38,9 @@ public class MainFrame extends javax.swing.JFrame {
         lblJob.setText("Job");
 
         cmxJob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Engineer", "Teacher", "Developer", "Designer", "Planner", "V-tuber" }));
-
-        btnSubmit.setText("Submit");
-        btnSubmit.setActionCommand("");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
+        cmxJob.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmxJobItemStateChanged(evt);
             }
         });
 
@@ -65,14 +61,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblJob)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmxJob, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSubmit)))))
+                                .addComponent(cmxJob, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,8 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblJob)
-                    .addComponent(cmxJob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSubmit))
+                    .addComponent(cmxJob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -93,11 +86,13 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-       String StrData = taOutput.getText();
-       StrData += "Your Job is " + cmxJob.getSelectedItem().toString() + "(" + (cmxJob.getSelectedIndex()+ 1) + ")" + ". \n";
-       taOutput.setText(StrData);
-    }//GEN-LAST:event_btnSubmitActionPerformed
+    private void cmxJobItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmxJobItemStateChanged
+        String StrData = null;
+        
+        StrData = "당신의 직업은 " + cmxJob.getSelectedItem().toString() + "입니다.\n";
+        
+        taOutput.setText(StrData);
+    }//GEN-LAST:event_cmxJobItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -125,7 +120,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cmxJob;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblJob;

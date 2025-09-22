@@ -169,7 +169,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lblLow" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="lblValue" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="lblHigh" min="-2" max="-2" attributes="0"/>
@@ -198,8 +198,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblLow" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblValue" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHigh" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblValue" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="57" max="32767" attributes="0"/>
                   </Group>

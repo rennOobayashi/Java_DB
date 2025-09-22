@@ -7,6 +7,7 @@
  *
  * @author devfo
  */
+
 import javax.swing.JProgressBar;
 
 public class MainFrame extends javax.swing.JFrame {
@@ -145,7 +146,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jplSilderLayout.createSequentialGroup()
                         .addComponent(lblLow)
-                        .addGap(70, 70, 70)
+                        .addGap(55, 55, 55)
                         .addComponent(lblValue)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblHigh))
@@ -168,8 +169,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLow)
-                    .addComponent(lblValue)
-                    .addComponent(lblHigh))
+                    .addComponent(lblHigh)
+                    .addComponent(lblValue))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 

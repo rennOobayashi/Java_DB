@@ -35,6 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jSlider1.setMinorTickSpacing(10);
         jSlider1.setPaintTicks(true);
 
         jTextField1.setText("0");

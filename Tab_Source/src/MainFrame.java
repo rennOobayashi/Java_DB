@@ -7,6 +7,8 @@
  *
  * @author devfo
  */
+import javax.swing.JProgressBar;
+
 public class MainFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
@@ -28,8 +30,20 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jtpMainPanel = new javax.swing.JTabbedPane();
-        jplProgressBar = new javax.swing.JPanel();
+        lblProgress = new javax.swing.JPanel();
+        jprProgressBar = new javax.swing.JProgressBar();
+        jlbProgress = new javax.swing.JLabel();
+        lblStartVal = new javax.swing.JLabel();
+        lblEndVal = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        btnSearch = new javax.swing.JButton();
         jplSilder = new javax.swing.JPanel();
+        jsrSilder = new javax.swing.JSlider();
+        lblSound = new javax.swing.JLabel();
+        lblSilderTitle = new javax.swing.JLabel();
+        lblHigh = new javax.swing.JLabel();
+        lblLow = new javax.swing.JLabel();
+        lblValue = new javax.swing.JLabel();
         txtStateInfo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,28 +54,123 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jplProgressBarLayout = new javax.swing.GroupLayout(jplProgressBar);
-        jplProgressBar.setLayout(jplProgressBarLayout);
-        jplProgressBarLayout.setHorizontalGroup(
-            jplProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+        jprProgressBar.setStringPainted(true);
+
+        jlbProgress.setText("Progress");
+
+        lblStartVal.setText("0");
+
+        lblEndVal.setText("100");
+
+        lblTitle.setText("ProgressBar Exam");
+
+        btnSearch.setText("Start Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout lblProgressLayout = new javax.swing.GroupLayout(lblProgress);
+        lblProgress.setLayout(lblProgressLayout);
+        lblProgressLayout.setHorizontalGroup(
+            lblProgressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblProgressLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jlbProgress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(lblProgressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(lblProgressLayout.createSequentialGroup()
+                        .addComponent(lblStartVal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblEndVal))
+                    .addComponent(jprProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblProgressLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(lblProgressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblProgressLayout.createSequentialGroup()
+                        .addComponent(btnSearch)
+                        .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblProgressLayout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addGap(145, 145, 145))))
         );
-        jplProgressBarLayout.setVerticalGroup(
-            jplProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+        lblProgressLayout.setVerticalGroup(
+            lblProgressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblProgressLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lblTitle)
+                .addGap(30, 30, 30)
+                .addGroup(lblProgressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlbProgress)
+                    .addComponent(jprProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lblProgressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStartVal)
+                    .addComponent(lblEndVal))
+                .addGap(12, 12, 12)
+                .addComponent(btnSearch)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jtpMainPanel.addTab("Progress Bar", jplProgressBar);
+        jtpMainPanel.addTab("Progress Bar", lblProgress);
+
+        jsrSilder.setMajorTickSpacing(10);
+        jsrSilder.setPaintTicks(true);
+        jsrSilder.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jsrSilderStateChanged(evt);
+            }
+        });
+
+        lblSound.setText("Sound");
+
+        lblSilderTitle.setText("Silder Exam");
+
+        lblHigh.setText("HIgh");
+
+        lblLow.setText("Low");
+
+        lblValue.setText("50");
 
         javax.swing.GroupLayout jplSilderLayout = new javax.swing.GroupLayout(jplSilder);
         jplSilder.setLayout(jplSilderLayout);
         jplSilderLayout.setHorizontalGroup(
             jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGroup(jplSilderLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(lblSound)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jplSilderLayout.createSequentialGroup()
+                        .addComponent(lblLow)
+                        .addGap(70, 70, 70)
+                        .addComponent(lblValue)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblHigh))
+                    .addComponent(jsrSilder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jplSilderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSilderTitle)
+                .addGap(162, 162, 162))
         );
         jplSilderLayout.setVerticalGroup(
             jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addGroup(jplSilderLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(lblSilderTitle)
+                .addGap(18, 18, 18)
+                .addGroup(jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jsrSilder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSound))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jplSilderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLow)
+                    .addComponent(lblValue)
+                    .addComponent(lblHigh))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jtpMainPanel.addTab("Silder", jplSilder);
@@ -72,37 +181,75 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtpMainPanel)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(txtStateInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtStateInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+            .addComponent(jtpMainPanel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addComponent(jtpMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtStateInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addComponent(txtStateInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        Thread objThread = new PBarThread(jprProgressBar);
+        objThread.start();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
     private void jtpMainPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpMainPanelStateChanged
         int iTabIndex = 0;
         String strTabTitle = null;
-        
+
         iTabIndex = jtpMainPanel.getSelectedIndex();
         strTabTitle = jtpMainPanel.getTitleAt(iTabIndex);
         txtStateInfo.setText("State info - " + strTabTitle);
     }//GEN-LAST:event_jtpMainPanelStateChanged
 
+    private void jsrSilderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsrSilderStateChanged
+        String strData = null;
+        int iValue = 0;
+        
+        iValue = jsrSilder.getValue();
+        strData = Integer.toString(iValue);
+        lblValue.setText(strData);
+    }//GEN-LAST:event_jsrSilderStateChanged
+
+
+    public class PBarThread extends Thread {
+        final static int DELAY = 500; //ms
+        JProgressBar objProgressBar;
+
+        public PBarThread(JProgressBar objPB) {
+            objProgressBar = objPB;
+            objProgressBar.setStringPainted(true);
+        }
+
+        public void run() {
+            int minValue  = objProgressBar.getMinimum();
+            int maxValue  = objProgressBar.getMaximum();
+
+            for (int i = minValue; i < maxValue; ++i) {
+                try {
+                    int iValue = objProgressBar.getValue();
+
+                    objProgressBar.setValue(iValue + 1);
+
+                    Thread.sleep(DELAY);
+                }
+                catch (InterruptedException ex) { }
+
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -129,9 +276,21 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jplProgressBar;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JLabel jlbProgress;
     private javax.swing.JPanel jplSilder;
+    private javax.swing.JProgressBar jprProgressBar;
+    private javax.swing.JSlider jsrSilder;
     private javax.swing.JTabbedPane jtpMainPanel;
+    private javax.swing.JLabel lblEndVal;
+    private javax.swing.JLabel lblHigh;
+    private javax.swing.JLabel lblLow;
+    private javax.swing.JPanel lblProgress;
+    private javax.swing.JLabel lblSilderTitle;
+    private javax.swing.JLabel lblSound;
+    private javax.swing.JLabel lblStartVal;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblValue;
     private javax.swing.JTextField txtStateInfo;
     // End of variables declaration//GEN-END:variables
 }

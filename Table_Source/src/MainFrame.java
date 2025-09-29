@@ -1,8 +1,13 @@
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -265,33 +270,53 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
-        MakeRowData objRowData;
-        Vector myVC = new Vector();
+        TableRowSorter<TableModel> objSorter = new TableRowSorter<>(jtbViewer.getModel());
         
-        for (int row = 0; row < jtbViewer.getRowCount(); ++row) {
-            if (jtbViewer.getValueAt(row, 0) != null) {
-                objRowData = new MakeRowData();
-                objRowData.strMovie = jtbViewer.getValueAt(row, 1).toString();
-                objRowData.iGallery = Integer.parseInt(jtbViewer.getValueAt(row, 2).toString());
-                myVC.add(objRowData);
+        jtbViewer.setRowSorter(objSorter);
+        ArrayList<RowSorter.SortKey> SortKey = new ArrayList<>();
+        
+        int colIdxToSort = 2;
+        SortKey.add(new RowSorter.SortKey(colIdxToSort, SortOrder.DESCENDING));
+        objSorter.setSortKeys(SortKey);
+        objSorter.sort();
+        
+        for (int i = 0; i < jtbViewer.getRowCount(); ++i) {
+            if (jtbViewer.getValueAt(i, 0) != null) {
+                jtbViewer.setValueAt(i + 1, i, 0);
             }
             else {
                 break;
             }
         }
-         
-        Collections.sort(myVC);
         
-        for (int i = 0; i < myVC.size(); ++i) {
-            objRowData = (MakeRowData)myVC.get(i);
-            jtbViewer.setValueAt(i + 1, i, 0);
-            jtbViewer.setValueAt(objRowData.strMovie, i, 1);
-            jtbViewer.setValueAt(objRowData.iGallery, i, 2);
-        }
-         
-        txtOrder.setText(null);
-        txtMovie.setText(null);
-        txtGallary.setText(null);
+        
+//        MakeRowData objRowData;
+//        Vector myVC = new Vector();
+//        
+//        for (int row = 0; row < jtbViewer.getRowCount(); ++row) {
+//            if (jtbViewer.getValueAt(row, 0) != null) {
+//                objRowData = new MakeRowData();
+//                objRowData.strMovie = jtbViewer.getValueAt(row, 1).toString();
+//                objRowData.iGallery = Integer.parseInt(jtbViewer.getValueAt(row, 2).toString());
+//                myVC.add(objRowData);
+//            }
+//            else {
+//                break;
+//            }
+//        }
+//         
+//        Collections.sort(myVC);
+//        
+//        for (int i = 0; i < myVC.size(); ++i) {
+//            objRowData = (MakeRowData)myVC.get(i);
+//            jtbViewer.setValueAt(i + 1, i, 0);
+//            jtbViewer.setValueAt(objRowData.strMovie, i, 1);
+//            jtbViewer.setValueAt(objRowData.iGallery, i, 2);
+//        }
+//         
+//        txtOrder.setText(null);
+//        txtMovie.setText(null);
+//        txtGallary.setText(null);
     }//GEN-LAST:event_btnSortActionPerformed
 
     public class MakeRowData implements Comparable<MakeRowData> {

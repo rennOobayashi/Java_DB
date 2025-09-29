@@ -111,6 +111,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Insert"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMovie">
       <Properties>
@@ -127,6 +130,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblGallary">
       <Properties>
@@ -140,6 +146,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -151,24 +160,27 @@
         <Component class="javax.swing.JTable" name="jtbViewer">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="4">
+              <Table columnCount="3" rowCount="5">
                 <Column editable="true" title="&#xc21c;&#xc704;" type="java.lang.Integer">
                   <Data value="1"/>
                   <Data value="2"/>
                   <Data value="3"/>
                   <Data value="4"/>
+                  <Data value="null"/>
                 </Column>
                 <Column editable="true" title="&#xc601;&#xd654; &#xc81c;&#xbaa9;" type="java.lang.String">
                   <Data value="&#xb85c;&#xb9c8;&#xc758; &#xd734;&#xc77c;"/>
                   <Data value="&#xd0c0;&#xc774;&#xd0c0;&#xb2c9;"/>
                   <Data value="&#xc8fd;&#xc740; &#xc2dc;&#xc778;&#xc758; &#xc0ac;&#xd68c;"/>
                   <Data value="&#xc26c;&#xb9ac;"/>
+                  <Data value="null"/>
                 </Column>
                 <Column editable="true" title="&#xad00;&#xac1d; &#xb3d9;&#xc6d0;" type="java.lang.Integer">
                   <Data value="1000000"/>
                   <Data value="800000"/>
                   <Data value="600000"/>
                   <Data value="400000"/>
+                  <Data value="null"/>
                 </Column>
               </Table>
             </Property>

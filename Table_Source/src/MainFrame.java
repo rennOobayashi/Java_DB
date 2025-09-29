@@ -1,3 +1,7 @@
+
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -47,24 +51,40 @@ public class MainFrame extends javax.swing.JFrame {
         lblOrder.setText("순위");
 
         btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
 
         lblMovie.setText("영화 제목");
         lblMovie.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblMovie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lblGallary.setText("관객 동원");
         lblGallary.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jtbViewer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), "로마의 휴일",  new Integer(1000000)},
                 { new Integer(2), "타이타닉",  new Integer(800000)},
                 { new Integer(3), "죽은 시인의 사회",  new Integer(600000)},
-                { new Integer(4), "쉬리",  new Integer(400000)}
+                { new Integer(4), "쉬리",  new Integer(400000)},
+                {null, null, null}
             },
             new String [] {
                 "순위", "영화 제목", "관객 동원"
@@ -155,10 +175,80 @@ public class MainFrame extends javax.swing.JFrame {
         iCntRow = jtbViewer.getSelectedRow();
         
         txtOrder.setText(jtbViewer.getValueAt(iCntRow, 0).toString());
-        txtMovie.setText(jtbViewer.getValueAt(iCntRow, 0).toString());
-        txtGallary.setText(jtbViewer.getValueAt(iCntRow, 0).toString());
+        txtMovie.setText(jtbViewer.getValueAt(iCntRow, 1).toString());
+        txtGallary.setText(jtbViewer.getValueAt(iCntRow, 2).toString());
     }//GEN-LAST:event_jtbViewerMouseClicked
 
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        int iCntRows = 0;
+        int iOrder = 0;
+        int iGallery = 0;
+                
+        iCntRows = jtbViewer.getRowCount();
+        for (int i = 0; i < jtbViewer.getRowCount(); ++i) {
+            if (jtbViewer.getValueAt(i, 0) == null) {
+                iCntRows = i;
+                break;
+            }
+        }
+        
+        iOrder = Integer.parseInt(txtOrder.getText());
+        jtbViewer.setValueAt(iOrder, iCntRows, 0);
+        
+        jtbViewer.setValueAt(txtMovie.getText(), iCntRows, 1);
+        
+        iGallery = Integer.parseInt(txtGallary.getText());
+        jtbViewer.setValueAt(iGallery, iCntRows, 2);
+    }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        int iCntRows = 0;
+        int iOrder = 0;
+        int iGallery = 0;
+                
+        iCntRows = jtbViewer.getSelectedRow();
+        
+        iOrder = Integer.parseInt(txtOrder.getText());
+        jtbViewer.setValueAt(iOrder, iCntRows, 0);
+        
+        jtbViewer.setValueAt(txtMovie.getText(), iCntRows, 1);
+        
+        iGallery = Integer.parseInt(txtGallary.getText());
+        
+        jtbViewer.setValueAt(iGallery, iCntRows, 2);
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        MakeRowData objRowData;
+        Vector myVC = new Vector();
+        
+        int iCntRows = 0;
+        iCntRows = jtbViewer.getSelectedRow();
+        
+        DefaultTableModel jTableModel = (DefaultTableModel)jtbViewer.getModel();
+        
+         for (int row = 0; row < jtbViewer.getRowCount(); ++row) {
+             if (jtbViewer.getValueAt(row, 0) != null) {
+                 objRowData = new MakeRowData();
+                 objRowData.strMovie = jtbViewer.getValueAt(row, 1).toString();
+                 objRowData.iGallery = Integer.parseInt(jtbViewer.getValueAt(row, 2).toString());
+                 myVC.add(objRowData);
+             }
+             else {
+                 break;
+             }
+         }
+         
+         myVC.removeElementAt(iCntRows);
+         jTableModel.removeRow(iCntRows);
+         
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    public class MakeRowData {
+        public String strMovie;
+        public int iGallery;
+    }
+    
     /**
      * @param args the command line arguments
      */

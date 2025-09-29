@@ -184,6 +184,13 @@ public class MainFrame extends javax.swing.JFrame {
         int iOrder = 0;
         int iGallery = 0;
                 
+        for (int i = 0; i < jtbViewer.getRowCount(); ++i) {
+            if (jtbViewer.getValueAt(i, 1) != null && jtbViewer.getValueAt(i, 1).toString().equals(txtMovie.getText())) {
+                txtMovie.setText("중복");
+                return;
+            }
+        }
+        
         iCntRows = jtbViewer.getRowCount();
         for (int i = 0; i < jtbViewer.getRowCount(); ++i) {
             if (jtbViewer.getValueAt(i, 0) == null) {

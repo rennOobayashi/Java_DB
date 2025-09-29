@@ -1,4 +1,6 @@
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,6 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbViewer = new javax.swing.JTable();
+        btnSort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +108,13 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtbViewer);
 
+        btnSort.setText("Sort");
+        btnSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,11 +144,12 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnInsert))))
+                                .addComponent(btnInsert)))
+                        .addComponent(btnSort))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,9 +171,11 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(lblGallary)
                     .addComponent(txtGallary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSort)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -251,9 +264,44 @@ public class MainFrame extends javax.swing.JFrame {
          
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    public class MakeRowData {
+    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        MakeRowData objRowData;
+        Vector myVC = new Vector();
+        
+        for (int row = 0; row < jtbViewer.getRowCount(); ++row) {
+            if (jtbViewer.getValueAt(row, 0) != null) {
+                objRowData = new MakeRowData();
+                objRowData.strMovie = jtbViewer.getValueAt(row, 1).toString();
+                objRowData.iGallery = Integer.parseInt(jtbViewer.getValueAt(row, 2).toString());
+                myVC.add(objRowData);
+            }
+            else {
+                break;
+            }
+        }
+         
+        Collections.sort(myVC);
+        
+        for (int i = 0; i < myVC.size(); ++i) {
+            objRowData = (MakeRowData)myVC.get(i);
+            jtbViewer.setValueAt(i + 1, i, 0);
+            jtbViewer.setValueAt(objRowData.strMovie, i, 1);
+            jtbViewer.setValueAt(objRowData.iGallery, i, 2);
+        }
+         
+        txtOrder.setText(null);
+        txtMovie.setText(null);
+        txtGallary.setText(null);
+    }//GEN-LAST:event_btnSortActionPerformed
+
+    public class MakeRowData implements Comparable<MakeRowData> {
         public String strMovie;
         public int iGallery;
+        
+        @Override
+        public int compareTo(MakeRowData other) {
+            return other.iGallery - iGallery;
+        }
     }
     
     /**
@@ -284,6 +332,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnSort;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbViewer;

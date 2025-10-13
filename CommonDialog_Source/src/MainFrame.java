@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.FileDialog;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -155,6 +156,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         diaFile.showOpenDialog(null);
+        
+        jtfDirectory.setText(diaFile.getSelectedFile().getPath());
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed

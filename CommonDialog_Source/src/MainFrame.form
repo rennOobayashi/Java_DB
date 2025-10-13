@@ -35,39 +35,31 @@
                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                       <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lblDirectory" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblDirectory" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                       <Component id="lblGreen" min="-2" pref="16" max="-2" attributes="0"/>
                                       <Component id="lblRed" min="-2" pref="16" max="-2" attributes="0"/>
                                       <Component id="lblBlue" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfDirectory" min="-2" pref="291" max="-2" attributes="0"/>
-                              <Component id="jtfRed" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="jtfGreen" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="jtfBlue" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnSave" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnOpen" alignment="1" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jtfDirectory" min="-2" pref="291" max="-2" attributes="0"/>
+                                  <Component id="jtfRed" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="jtfGreen" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="jtfBlue" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnColor" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnSave" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnOpen" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="btnColor" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

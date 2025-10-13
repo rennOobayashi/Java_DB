@@ -165,7 +165,14 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
-        Color cData = new Color(50, 200, 50);
+        int red, green, blue;
+        
+        red = Integer.parseInt(jtfRed.getText());
+        green = Integer.parseInt(jtfGreen.getText());
+        blue = Integer.parseInt(jtfBlue.getText());
+        
+        Color cData = new Color(red, green, blue);
+        
         diaColor.showDialog(null, "Choose Color", cData);
     }//GEN-LAST:event_btnColorActionPerformed
 

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -171,6 +175,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc911;&#xbcf5;&#xd655;&#xc778;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckIDActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPw">
       <Properties>
@@ -208,18 +215,36 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnMember">
       <Properties>
+        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xc815;&#xd68c;&#xc6d0;"/>
         <Property name="actionCommand" type="java.lang.String" value="Member"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnHMember">
       <Properties>
+        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xc900;&#xd68c;&#xc6d0;"/>
         <Property name="actionCommand" type="java.lang.String" value="Member"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnStudent">
       <Properties>
+        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xd559;&#xc0dd;&#xd68c;&#xc6d0;"/>
         <Property name="actionCommand" type="java.lang.String" value="Member"/>
       </Properties>
@@ -312,6 +337,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xd68c;&#xc6d0; &#xac00;&#xc785;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

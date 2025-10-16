@@ -7,17 +7,27 @@
  *
  * @author devfo
  */
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
 public class MainFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
-
+    boolean checkID = false;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
+        
+       
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
         jtfID = new javax.swing.JTextField();
@@ -68,6 +79,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         btnCheckID.setText("중복확인");
+        btnCheckID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckIDActionPerformed(evt);
+            }
+        });
 
         lblPw.setText("비밀번호");
 
@@ -85,12 +101,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblHobby.setText("관심 분야");
 
+        buttonGroup1.add(rbnMember);
         rbnMember.setText("정회원");
         rbnMember.setActionCommand("Member");
 
+        buttonGroup1.add(rbnHMember);
         rbnHMember.setText("준회원");
         rbnHMember.setActionCommand("Member");
 
+        buttonGroup1.add(rbnStudent);
         rbnStudent.setText("학생회원");
         rbnStudent.setActionCommand("Member");
 
@@ -126,6 +145,11 @@ public class MainFrame extends javax.swing.JFrame {
         sclPayfor.setViewportView(lsPayfor);
 
         btnSubmit.setText("회원 가입");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,6 +269,169 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNameActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        String fileData = null;
+        String id = null;
+        String pw = null;
+        String name = null;
+        String member = null;
+        int hobby = 0;
+        String job = null;
+        String payFor = null;
+        
+        if (jtfID.getText() != null) {
+            id = jtfID.getText();
+        }
+        else {
+            jtfID.setText("에러");
+            return;
+        }
+        
+        if (jtfIPw.getText() != null) {
+            if (jtfIPw.getText().equals(jtfICheckPw.getText())) {
+                pw = jtfIPw.getText();
+            }
+            else {
+                jtfIPw.setText("중복");
+                return;
+            }
+        }
+        else {
+            jtfIPw.setText("에러");
+            return;
+        }
+        
+        if (jtfName.getText() != null) {
+            name = jtfName.getText();
+        }
+        else {
+            jtfName.setText("에러");
+            return;
+        }
+            
+        
+        if (rbnMember.isSelected()) {
+            member = rbnMember.getText();
+        }
+        else if (rbnHMember.isSelected()) {
+            member = rbnHMember.getText();
+        }
+        else if (rbnStudent.isSelected()) {
+            member = rbnStudent.getText();
+        }
+        else {
+            jtfID.setText("rbn 에러");
+            return;
+        }
+        
+        if (chkSwim.isSelected()) {
+            hobby += 1;
+        }
+        if (chkGame.isSelected()) {
+            hobby += 2;
+        }
+        if (chkGolf.isSelected()) {
+            hobby += 4;
+        }
+        if (chkSki.isSelected()) {
+            hobby += 8;
+        }
+        if (chkBook.isSelected()) {
+            hobby += 16;
+        }
+        if (chkTennis.isSelected()) {
+            hobby += 32;
+        }
+        
+        job = (String)cbxJob.getSelectedItem();
+        
+        if (lsPayfor.getSelectedIndex() != -1) {
+            payFor = (String)lsPayfor.getSelectedValue();
+        }
+        else {
+            jtfID.setText("PayFor 에러");
+            return;
+        }
+        
+        if (!checkID) {
+            return;
+        }
+        
+        fileData = id + " " + pw + " " + name + " " + member + " " + hobby + " " + job + " " + payFor + "\r\n";
+        
+        Path path = Paths.get("member.txt");
+        
+        try {
+            Files.writeString(path, fileData, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            ResetForm();
+        }
+        catch (IOException e) {
+            jtfID.setText("파일 처리 문제 발생(" + e.getMessage() + ")");
+        }
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnCheckIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckIDActionPerformed
+        checkID = CheckIDCon(jtfID.getText(), "member.txt");
+        
+        if (!checkID) {
+            jtfID.setText("중복");
+        }
+    }//GEN-LAST:event_btnCheckIDActionPerformed
+
+    void ResetForm() {
+        jtfID.setText("");
+        jtfIPw.setText("");
+        jtfICheckPw.setText("");
+        jtfName.setText("");
+        
+        rbnMember.setSelected(false);
+        rbnHMember.setSelected(false);
+        rbnStudent.setSelected(false);
+        
+        chkSwim.setSelected(false);
+        chkGame.setSelected(false);
+        chkGolf.setSelected(false);
+        chkSki.setSelected(false);
+        chkBook.setSelected(false);
+        chkTennis.setSelected(false);
+        
+        cbxJob.setSelectedIndex(1);
+        lsPayfor.setSelectedIndex(-1);
+    }
+    
+    boolean CheckIDCon(String id, String path) {
+        Path _path = Paths.get(path);
+        boolean isConfirmed = true;
+        
+        try {
+            String[] strDatas;
+            
+            String content = Files.readString(_path);
+            
+            if (content.equals("")) {
+                return true;
+            }
+            String[] SplitContent = content.split("\n");
+            
+            for (String c : SplitContent) {
+                strDatas = c.split(" ");
+                
+                if (id.equals(strDatas[0])) {
+                    isConfirmed = false;
+                    break;
+                }
+            }
+            
+        }
+        catch (IOException e) {
+            jtfID.setText("파일 읽기 오류(" + e.getMessage() + ")");
+            isConfirmed = false;
+        }
+        
+        return isConfirmed;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -273,6 +460,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheckID;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxJob;
     private javax.swing.JCheckBox chkBook;
     private javax.swing.JCheckBox chkGame;

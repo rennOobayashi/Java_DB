@@ -22,6 +22,9 @@ public class MainFrame extends javax.swing.JFrame {
     int ix, iy, width, height;
     Color cData = new Color(0, 0, 255);
     
+    Font objFont;
+    String strData = null;
+    
     public MainFrame() {
         initComponents();
     }
@@ -47,6 +50,10 @@ public class MainFrame extends javax.swing.JFrame {
         mnuFIle_Exit = new javax.swing.JMenuItem();
         mnuEdit = new javax.swing.JMenu();
         mnuGraphic = new javax.swing.JMenu();
+        mnuFont = new javax.swing.JMenu();
+        mnuFont_Arial = new javax.swing.JMenuItem();
+        mnuFont_Gungseo = new javax.swing.JMenuItem();
+        mnuFont_Dotum = new javax.swing.JMenuItem();
 
         mnuGraphic_Line.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_DOWN_MASK));
         mnuGraphic_Line.setText("Line");
@@ -203,6 +210,52 @@ public class MainFrame extends javax.swing.JFrame {
         mnuGraphic.setText("Graphic");
         jMenuBar1.add(mnuGraphic);
 
+        mnuFont.setText("Font");
+
+        mnuFont_Arial.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuFont_Arial.setText("Arial");
+        mnuFont_Arial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFont_ArialActionPerformed(evt);
+            }
+        });
+        mnuFont_Arial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mnuFont_ArialKeyPressed(evt);
+            }
+        });
+        mnuFont.add(mnuFont_Arial);
+
+        mnuFont_Gungseo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuFont_Gungseo.setText("궁서체");
+        mnuFont_Gungseo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFont_GungseoActionPerformed(evt);
+            }
+        });
+        mnuFont_Gungseo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mnuFont_GungseoKeyPressed(evt);
+            }
+        });
+        mnuFont.add(mnuFont_Gungseo);
+
+        mnuFont_Dotum.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuFont_Dotum.setText("돋움체");
+        mnuFont_Dotum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFont_DotumActionPerformed(evt);
+            }
+        });
+        mnuFont_Dotum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mnuFont_DotumKeyPressed(evt);
+            }
+        });
+        mnuFont.add(mnuFont_Dotum);
+
+        jMenuBar1.add(mnuFont);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,6 +284,18 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
             case 33: g.drawRect(ix, iy, width, height);
                 g.fillRect(ix, iy, width, height);
+                break;
+            case 41: strData = "Arial Font 202444086 Inhee Lee";
+                g.setFont(objFont);
+                g.drawString(strData, ix, iy);
+                break;
+            case 42: strData = "궁서체 입니다. 202444086 이인희";
+                g.setFont(objFont);
+                g.drawString(strData, ix, iy);
+                break;
+            case 43: strData = "돋움체 입니다. 202444086 이인희";
+                g.setFont(objFont);
+                g.drawString(strData, ix, iy);
                 break;
             default: this.setTitle("Unknown index");
             break;
@@ -344,6 +409,54 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formMouseClicked
 
+    private void mnuFont_ArialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFont_ArialActionPerformed
+        ix = 10;
+        iy = 100;
+        objFont = new Font("Arial", Font.PLAIN, 24);
+        iMenu_idx = 41;
+        this.repaint();
+    }//GEN-LAST:event_mnuFont_ArialActionPerformed
+
+    private void mnuFont_GungseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFont_GungseoActionPerformed
+        ix = 10;
+        iy = 100;
+        objFont = new Font("궁서체", Font.BOLD, 24);
+        iMenu_idx = 42;
+        this.repaint();
+    }//GEN-LAST:event_mnuFont_GungseoActionPerformed
+
+    private void mnuFont_DotumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFont_DotumActionPerformed
+        ix = 10;
+        iy = 100;
+        objFont = new Font("돋움체", Font.ITALIC, 24);
+        iMenu_idx = 43;
+        this.repaint();
+    }//GEN-LAST:event_mnuFont_DotumActionPerformed
+
+    private void mnuFont_ArialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnuFont_ArialKeyPressed
+        ix = 10;
+        iy = 100;
+        objFont = new Font("Arial", Font.PLAIN, 24);
+        iMenu_idx = 41;
+        this.repaint();
+    }//GEN-LAST:event_mnuFont_ArialKeyPressed
+
+    private void mnuFont_GungseoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnuFont_GungseoKeyPressed
+        ix = 10;
+        iy = 100;
+        objFont = new Font("궁서체", Font.BOLD, 24);
+        iMenu_idx = 42;
+        this.repaint();
+    }//GEN-LAST:event_mnuFont_GungseoKeyPressed
+
+    private void mnuFont_DotumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnuFont_DotumKeyPressed
+        ix = 10;
+        iy = 100;
+        objFont = new Font("돋움체", Font.ITALIC, 24);
+        iMenu_idx = 43;
+        this.repaint();
+    }//GEN-LAST:event_mnuFont_DotumKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -378,6 +491,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuFIle_Open;
     private javax.swing.JMenuItem mnuFIle_Save;
     private javax.swing.JMenu mnuFile;
+    private javax.swing.JMenu mnuFont;
+    private javax.swing.JMenuItem mnuFont_Arial;
+    private javax.swing.JMenuItem mnuFont_Dotum;
+    private javax.swing.JMenuItem mnuFont_Gungseo;
     private javax.swing.JMenu mnuGraphic;
     private javax.swing.JMenuItem mnuGraphic_Eclipse;
     private javax.swing.JMenuItem mnuGraphic_Line;

@@ -27,8 +27,12 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
+        mnuFIle_Open = new javax.swing.JMenuItem();
+        mnuFIle_Save = new javax.swing.JMenuItem();
+        mnuFIle_Exit = new javax.swing.JMenuItem();
         mnuEdit = new javax.swing.JMenu();
         mnuGraphic = new javax.swing.JMenu();
         mnuGraphic_Line = new javax.swing.JMenuItem();
@@ -43,6 +47,49 @@ public class MainFrame extends javax.swing.JFrame {
                 mnuFileActionPerformed(evt);
             }
         });
+
+        mnuFIle_Open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuFIle_Open.setText("Open");
+        mnuFIle_Open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFIle_OpenActionPerformed(evt);
+            }
+        });
+        mnuFIle_Open.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mnuFIle_OpenKeyPressed(evt);
+            }
+        });
+        mnuFile.add(mnuFIle_Open);
+
+        mnuFIle_Save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuFIle_Save.setText("Save");
+        mnuFIle_Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFIle_SaveActionPerformed(evt);
+            }
+        });
+        mnuFIle_Save.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mnuFIle_SaveKeyPressed(evt);
+            }
+        });
+        mnuFile.add(mnuFIle_Save);
+
+        mnuFIle_Exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuFIle_Exit.setText("Exit");
+        mnuFIle_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFIle_ExitActionPerformed(evt);
+            }
+        });
+        mnuFIle_Exit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mnuFIle_ExitKeyPressed(evt);
+            }
+        });
+        mnuFile.add(mnuFIle_Exit);
+
         jMenuBar1.add(mnuFile);
 
         mnuEdit.setText("Edit");
@@ -104,11 +151,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGap(0, 347, Short.MAX_VALUE)
         );
 
         pack();
@@ -142,6 +189,30 @@ public class MainFrame extends javax.swing.JFrame {
         this.setTitle("Rectangle Menu Click!");
     }//GEN-LAST:event_mnuGraphic_RectangleKeyPressed
 
+    private void mnuFIle_OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFIle_OpenActionPerformed
+        jFileChooser1.showOpenDialog(null);
+    }//GEN-LAST:event_mnuFIle_OpenActionPerformed
+
+    private void mnuFIle_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFIle_SaveActionPerformed
+        jFileChooser1.showSaveDialog(null);
+    }//GEN-LAST:event_mnuFIle_SaveActionPerformed
+
+    private void mnuFIle_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFIle_ExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_mnuFIle_ExitActionPerformed
+
+    private void mnuFIle_OpenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnuFIle_OpenKeyPressed
+        jFileChooser1.showOpenDialog(null);
+    }//GEN-LAST:event_mnuFIle_OpenKeyPressed
+
+    private void mnuFIle_SaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnuFIle_SaveKeyPressed
+        jFileChooser1.showSaveDialog(null);
+    }//GEN-LAST:event_mnuFIle_SaveKeyPressed
+
+    private void mnuFIle_ExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnuFIle_ExitKeyPressed
+        System.exit(0);
+    }//GEN-LAST:event_mnuFIle_ExitKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -168,8 +239,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mnuEdit;
+    private javax.swing.JMenuItem mnuFIle_Exit;
+    private javax.swing.JMenuItem mnuFIle_Open;
+    private javax.swing.JMenuItem mnuFIle_Save;
     private javax.swing.JMenu mnuFile;
     private javax.swing.JMenu mnuGraphic;
     private javax.swing.JMenuItem mnuGraphic_Eclipse;

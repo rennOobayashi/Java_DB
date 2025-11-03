@@ -58,13 +58,6 @@
                                       <Component id="chkGolf" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jtfName" min="-2" pref="177" max="-2" attributes="0"/>
-                                  <Component id="jtfIPw" min="-2" pref="177" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jtfID" min="-2" pref="177" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnCheckID" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jtfICheckPw" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="rbnMember" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -82,6 +75,15 @@
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="sclPayfor" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cbxJob" alignment="0" pref="176" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="pwdPw" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jtfID" alignment="0" pref="177" max="32767" attributes="0"/>
+                                          <Component id="pwdChkPw" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnCheckID" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -106,12 +108,12 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPw" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfIPw" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pwdPw" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblCheckPw" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfICheckPw" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pwdChkPw" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -184,14 +186,10 @@
         <Property name="text" type="java.lang.String" value="&#xbe44;&#xbc00;&#xbc88;&#xd638;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfIPw">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblCheckPw">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xbe44;&#xbc00;&#xbc88;&#xd638; &#xd655;&#xc778;"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jtfICheckPw">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfName">
       <Events>
@@ -215,9 +213,6 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnMember">
       <Properties>
-        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
@@ -227,9 +222,6 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnHMember">
       <Properties>
-        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
@@ -239,9 +231,6 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnStudent">
       <Properties>
-        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
@@ -340,6 +329,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pwdPw">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pwdChkPw">
     </Component>
   </SubComponents>
 </Form>

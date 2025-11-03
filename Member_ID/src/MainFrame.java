@@ -43,9 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         jtfID = new javax.swing.JTextField();
         btnCheckID = new javax.swing.JButton();
         lblPw = new javax.swing.JLabel();
-        jtfIPw = new javax.swing.JTextField();
         lblCheckPw = new javax.swing.JLabel();
-        jtfICheckPw = new javax.swing.JTextField();
         jtfName = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         lblMember = new javax.swing.JLabel();
@@ -65,6 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
         sclPayfor = new javax.swing.JScrollPane();
         lsPayfor = new javax.swing.JList<>();
         btnSubmit = new javax.swing.JButton();
+        pwdPw = new javax.swing.JPasswordField();
+        pwdChkPw = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,12 +183,6 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(chkGolf))
                                     .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfIPw, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCheckID))
-                                    .addComponent(jtfICheckPw, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(rbnMember)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -203,7 +197,14 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addComponent(chkTennis))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(sclPayfor, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cbxJob, javax.swing.GroupLayout.Alignment.LEADING, 0, 176, Short.MAX_VALUE)))))))
+                                        .addComponent(cbxJob, javax.swing.GroupLayout.Alignment.LEADING, 0, 176, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(pwdPw, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                            .addComponent(pwdChkPw, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCheckID)))))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -219,11 +220,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPw)
-                    .addComponent(jtfIPw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwdPw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCheckPw)
-                    .addComponent(jtfICheckPw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwdChkPw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
@@ -287,17 +288,15 @@ public class MainFrame extends javax.swing.JFrame {
             return;
         }
         
-        if (jtfIPw.getText() != null) {
-            if (jtfIPw.getText().equals(jtfICheckPw.getText())) {
-                pw = jtfIPw.getText();
+        if (pwdPw.getPassword() != null) {
+            if (String.valueOf(pwdPw.getPassword()).equals(String.valueOf(pwdChkPw.getPassword()))) {
+                pw = String.valueOf(pwdPw.getPassword());   
             }
             else {
-                jtfIPw.setText("중복");
                 return;
             }
         }
         else {
-            jtfIPw.setText("에러");
             return;
         }
         
@@ -381,8 +380,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     void ResetForm() {
         jtfID.setText("");
-        jtfIPw.setText("");
-        jtfICheckPw.setText("");
+        pwdPw.setText("");
+        pwdChkPw.setText("");
         jtfName.setText("");
         
         rbnMember.setSelected(false);
@@ -468,9 +467,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkSki;
     private javax.swing.JCheckBox chkSwim;
     private javax.swing.JCheckBox chkTennis;
-    private javax.swing.JTextField jtfICheckPw;
     private javax.swing.JTextField jtfID;
-    private javax.swing.JTextField jtfIPw;
     private javax.swing.JTextField jtfName;
     private javax.swing.JLabel lblCheckPw;
     private javax.swing.JLabel lblHobby;
@@ -482,6 +479,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPw;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JList<String> lsPayfor;
+    private javax.swing.JPasswordField pwdChkPw;
+    private javax.swing.JPasswordField pwdPw;
     private javax.swing.JRadioButton rbnHMember;
     private javax.swing.JRadioButton rbnMember;
     private javax.swing.JRadioButton rbnStudent;

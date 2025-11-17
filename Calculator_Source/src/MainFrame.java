@@ -15,6 +15,7 @@ public class MainFrame extends javax.swing.JFrame {
     String strData = "";
     String memory = "";
     boolean isDot = false;
+    boolean isCanCal = false;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
@@ -445,6 +446,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "0");
         strData += "0";
+        isCanCal = true;
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
@@ -454,6 +456,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "1");
         strData += "1";
+        isCanCal = true;
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
@@ -463,6 +466,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "2");
         strData += "2";
+        isCanCal = true;
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
@@ -472,6 +476,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "3");
         strData += "3";
+        isCanCal = true;
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
@@ -481,6 +486,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "4");
         strData += "4";
+        isCanCal = true;
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
@@ -490,6 +496,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "5");
         strData += "5";
+        isCanCal = true;
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
@@ -499,6 +506,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "6");
         strData += "6";
+        isCanCal = true;
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
@@ -508,6 +516,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "7");
         strData += "7";
+        isCanCal = true;
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
@@ -517,6 +526,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "8");
         strData += "8";
+        isCanCal = true;
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
@@ -526,6 +536,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jtfViewer.setText(jtfViewer.getText() + "9");
         strData += "9";
+        isCanCal = true;
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btnDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivActionPerformed
@@ -538,6 +549,7 @@ public class MainFrame extends javax.swing.JFrame {
         cal.addElement("/");
         strData = "";
         isDot = false;
+        isCanCal = false;
     }//GEN-LAST:event_btnDivActionPerformed
 
     private void btnMulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMulActionPerformed
@@ -550,6 +562,7 @@ public class MainFrame extends javax.swing.JFrame {
         cal.addElement("*");
         strData = "";
         isDot = false;
+        isCanCal = false;
     }//GEN-LAST:event_btnMulActionPerformed
 
     private void btnSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubActionPerformed
@@ -562,6 +575,7 @@ public class MainFrame extends javax.swing.JFrame {
         cal.addElement("-");
         strData = "";
         isDot = false;
+        isCanCal = false;
     }//GEN-LAST:event_btnSubActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -574,9 +588,14 @@ public class MainFrame extends javax.swing.JFrame {
         cal.addElement("+");
         strData = "";
         isDot = false;
+        isCanCal = false;
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualActionPerformed
+        if (!isCanCal) {
+            return;
+        }
+        
         if (strData != "") {
             cal.addElement(strData);
             strData = "";
@@ -596,11 +615,8 @@ public class MainFrame extends javax.swing.JFrame {
         middleResult = Calculate(middleResult, cal.get(1), Float.valueOf(cal.get(2)));
         
         for (int i = 3; i < cal.size(); i += 2) {
-            if (cal.size() - 2 <= i) {
-                break;
-            }
             
-            middleResult = Calculate(middleResult, cal.get(i + 1), Float.valueOf(cal.get(i)));
+            middleResult = Calculate(middleResult, cal.get(i), Float.valueOf(cal.get(i + 1)));
         }
         
 
